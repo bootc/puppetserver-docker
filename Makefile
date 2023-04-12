@@ -36,7 +36,7 @@ test:
 		rspec --options puppetserver/.rspec spec
 
 push-image:
-	@docker push puppet/puppetserver:$(VERSION)
+	@docker push $(NAMESPACE)/puppetserver:$(VERSION)
 
 push-readme:
 	@docker pull sheogorath/readme-to-dockerhub
