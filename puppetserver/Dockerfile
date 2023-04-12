@@ -25,7 +25,7 @@ ENV PUPPERWARE_ANALYTICS_TRACKING_ID="UA-132486246-4" \
     PUPPERWARE_ANALYTICS_APP_NAME="puppetserver" \
     PUPPERWARE_ANALYTICS_ENABLED=false \
     PUPPERWARE_ANALYTICS_STREAM="$pupperware_analytics_stream" \
-    PUPPETSERVER_JAVA_ARGS="-Xms512m -Xmx512m" \
+    PUPPETSERVER_JAVA_ARGS="-XX:+UseContainerSupport --add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED" \
     PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH \
     SSLDIR=/etc/puppetlabs/puppet/ssl \
     LOGDIR=/var/log/puppetlabs/puppetserver \
@@ -65,6 +65,8 @@ RUN chmod +x /docker-entrypoint.sh /healthcheck.sh /docker-entrypoint.d/*.sh && 
         ca-certificates \
         dumb-init \
         git \
+        netbase \
+        openjdk-17-jre-headless \
     ;
 
 ADD https://apt.puppetlabs.com/puppet7-release-$UBUNTU_CODENAME.deb /puppet.deb
