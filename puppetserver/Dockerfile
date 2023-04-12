@@ -2,9 +2,9 @@
 ARG version=7.11.0
 
 # Puppet repository suite to install from (NOT the base image)
-ARG UBUNTU_CODENAME=bionic
+ARG UBUNTU_CODENAME=focal
 
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 ARG version
 ARG UBUNTU_CODENAME
